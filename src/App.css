@@ -1,0 +1,149 @@
+body{
+  background: #5dc2e8;
+}
+
+.home{
+  color: white;
+  padding: 10px;
+}
+
+.navbar{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+
+button{
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.navbar h1{
+  font-size: 40px;
+  font-family: 'Frank Ruhl Libre', serif;
+  letter-spacing: 1px;
+}
+
+.description{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  margin: 20px 0;
+  font-family: 'Noto Sans HK', sans-serif;
+  letter-spacing: 0.5px;
+  grid-gap: 20px;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.introduction{
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.login-btn{
+  background: #b7b5b5;
+  color: white;
+  font-weight: bold;
+}
+
+.signup-btn{
+  background: #5ee45e;
+  color: white;
+  font-weight: bold;
+}
+
+.loggedin-nav{
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  padding: 15px;
+  font-family: 'Frank Ruhl Libre', serif;
+  letter-spacing: 1px;
+  background: lightseagreen;
+}
+
+.account, .change-password-div{
+   width: 90%;
+    max-width: 400px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+.account{
+  background: steelblue;
+  display: grid;
+  grid-gap: 10px;
+  justify-content: center;
+  background: #b2ebf2;
+}
+
+.change-password-div{
+    background: #b2ebf2;
+     max-width: 500px;
+}
+
+.change-password{
+  display: grid;
+  grid-gap: 10px;
+  justify-content: center;
+  padding: 10px;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.journal {
+    background: #fbf8f8;
+    padding: 15px;
+    color: #3e3c3c;
+    width: 90%;
+    max-width: 700px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.journal:hover {
+    box-shadow: 5px 10px #bdd7e0;
+}
+
+.new-journal-form{
+  display: grid;
+  width: 90%;
+  max-width: 750px;
+  margin: 0 auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.new-journal-form input{
+    height: 2rem;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.form_info{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+}
+
+
+
+
+
+
+
+
+
