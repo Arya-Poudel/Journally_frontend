@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Journally_frontend/static/css/main.4ab83d39.chunk.css",
+    "main.js": "/Journally_frontend/static/js/main.826aca14.chunk.js",
+    "main.js.map": "/Journally_frontend/static/js/main.826aca14.chunk.js.map",
+    "runtime-main.js": "/Journally_frontend/static/js/runtime-main.cf3cb5be.js",
+    "runtime-main.js.map": "/Journally_frontend/static/js/runtime-main.cf3cb5be.js.map",
+    "static/js/2.49bbe12c.chunk.js": "/Journally_frontend/static/js/2.49bbe12c.chunk.js",
+    "static/js/2.49bbe12c.chunk.js.map": "/Journally_frontend/static/js/2.49bbe12c.chunk.js.map",
+    "index.html": "/Journally_frontend/index.html",
+    "static/css/main.4ab83d39.chunk.css.map": "/Journally_frontend/static/css/main.4ab83d39.chunk.css.map",
+    "static/js/2.49bbe12c.chunk.js.LICENSE.txt": "/Journally_frontend/static/js/2.49bbe12c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cf3cb5be.js",
+    "static/js/2.49bbe12c.chunk.js",
+    "static/css/main.4ab83d39.chunk.css",
+    "static/js/main.826aca14.chunk.js"
+  ]
+}
