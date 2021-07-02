@@ -11,7 +11,7 @@ const Login = () => {
 	if (JSON.parse(localStorage.getItem('token'))) {
 		const checkToken = async () => {
 			try{
-				const response = await fetch('http://localhost:5000/user/privatejournals', {
+				const response = await fetch('https://journally-backend.herokuapp.com/user/privatejournals', {
 					mode: 'cors',
 					headers:{
 						'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
@@ -38,7 +38,7 @@ const Login = () => {
 		}
 		let formdata = new FormData(document.getElementById('login_form'));
 		try{
-			const response = await fetch('http://localhost:5000/login', {
+			const response = await fetch('https://journally-backend.herokuapp.com/login', {
 				method: "POST",
 				mode: 'cors',
 				headers:{

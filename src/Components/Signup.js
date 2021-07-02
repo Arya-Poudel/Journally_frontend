@@ -14,7 +14,7 @@ const Signup = () => {
 		}
 		let formdata = new FormData(document.getElementById('signup_form'));
 		try{
-			const response = await fetch('http://localhost:5000/signup', {
+			const response = await fetch('https://journally-backend.herokuapp.com/signup', {
 				method: "POST",
 				mode: 'cors',
 				headers:{

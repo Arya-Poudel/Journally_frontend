@@ -22,7 +22,7 @@ const UserInfo = () => {
 		const answer = window.confirm("Are you sure you want to delete your account? This is permanent and cannot be undone");
 		if (answer) {
 	      try{
-              const response = await fetch('http://localhost:5000/user/account/delete', {
+              const response = await fetch('https://journally-backend.herokuapp.com/user/account/delete', {
               method: "DELETE",
               mode: 'cors',
               headers:{
@@ -34,7 +34,7 @@ const UserInfo = () => {
 	          const data = await response.json();
 	          if (response.ok) {
 	          	localStorage.removeItem('token');
-							window.location.href = `http://localhost:3000/#/`;
+							history.push('/');
 	          } else{
 	          	setMessage(data.message)
 	          }
@@ -49,7 +49,7 @@ const UserInfo = () => {
 
 		let formdata = new FormData(document.getElementById('change_password_form'));
 		try{
-			const response = await fetch('http://localhost:5000/user/changepassword', {
+			const response = await fetch('https://journally-backend.herokuapp.com/user/changepassword', {
 				method: "POST",
 				mode: 'cors',
 				headers:{
@@ -76,7 +76,7 @@ const UserInfo = () => {
 	useEffect(() => {
 		async function getData(){
 			try{
-				const response = await fetch('http://localhost:5000/user', {
+				const response = await fetch('https://journally-backend.herokuapp.com/user', {
 					mode: 'cors',
 					headers:{
 						'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,

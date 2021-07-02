@@ -16,7 +16,7 @@ const PrivateJournals = () => {
 	useEffect(() => {
 		async function getData(){
 			try{
-				const response = await fetch('http://localhost:5000/user/privatejournals', {
+				const response = await fetch('https://journally-backend.herokuapp.com/user/privatejournals', {
 					mode: 'cors',
 					headers:{
 						'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,

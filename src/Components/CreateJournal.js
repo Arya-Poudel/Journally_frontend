@@ -17,7 +17,7 @@ const CreateJournal = () => {
   useEffect(() => {
     async function getData(){
       try{
-        const response = await fetch('http://localhost:5000/user/', {
+        const response = await fetch('https://journally-backend.herokuapp.com/user/', {
           mode: 'cors',
           headers:{
             'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
@@ -46,7 +46,7 @@ const CreateJournal = () => {
         }
         
         try{
-            const response = await fetch('http://localhost:5000/user/createjournal', {
+            const response = await fetch('https://journally-backend.herokuapp.com/user/createjournal', {
               method: "POST",
               mode: 'cors',
               headers:{

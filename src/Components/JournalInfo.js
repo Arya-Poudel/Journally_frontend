@@ -23,7 +23,7 @@ const JournalInfo = ({blogId}) => {
 		const answer = window.confirm("Are you sure you want to delete this journal?");
 		if (answer) {
 	      try{
-            const response = await fetch(`http://localhost:5000/user/privatejournals/${blogId}/delete`, {
+            const response = await fetch(`https://journally-backend.herokuapp.com/user/privatejournals/${blogId}/delete`, {
               method: "DELETE",
               mode: 'cors',
               headers:{
@@ -52,7 +52,7 @@ const JournalInfo = ({blogId}) => {
         }
 
         try{
-            const response = await fetch(`http://localhost:5000/user/updatejournal/${blogId}`, {
+            const response = await fetch(`https://journally-backend.herokuapp.com/user/updatejournal/${blogId}`, {
               method: "PUT",
               mode: 'cors',
               headers:{
@@ -78,7 +78,7 @@ const JournalInfo = ({blogId}) => {
 	useEffect(() => {
 		async function getData(){
 			try{
-				const response = await fetch(`http://localhost:5000/user/privatejournals/${blogId}`, {
+				const response = await fetch(`https://journally-backend.herokuapp.com/user/privatejournals/${blogId}`, {
 					mode: 'cors',
 					headers:{
 						'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
