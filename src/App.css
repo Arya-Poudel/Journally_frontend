@@ -7,6 +7,10 @@ body{
   padding: 10px;
 }
 
+.home-link{
+  text-decoration: none;
+}
+
 .navbar{
   display: flex;
   justify-content: space-around;
@@ -14,17 +18,11 @@ body{
   padding: 10px;
 }
 
-button{
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  margin: 3px;
-}
-
 .navbar h1{
   font-size: 40px;
   font-family: 'Frank Ruhl Libre', serif;
   letter-spacing: 1px;
+  color: white;
 }
 
 .description{
@@ -32,7 +30,6 @@ button{
   justify-content: center;
   align-items: center;
   padding: 30px;
-  margin: 20px 0;
   font-family: 'Noto Sans HK', sans-serif;
   letter-spacing: 0.5px;
   grid-gap: 20px;
@@ -43,18 +40,6 @@ button{
 .introduction{
   text-align: center;
   padding-bottom: 40px;
-}
-
-.login-btn{
-  background: #b7b5b5;
-  color: white;
-  font-weight: bold;
-}
-
-.signup-btn{
-  background: #5ee45e;
-  color: white;
-  font-weight: bold;
 }
 
 .loggedin-nav{
@@ -69,53 +54,42 @@ button{
 
 .account, .change-password-div{
    width: 90%;
-    max-width: 400px;
-    text-align: center;
+    max-width: 450px;
     padding: 10px;
-    border-radius: 10px;
     position: absolute;
     top: 20%;
     left: 50%;
     transform: translate(-50%,0);
+    background: #b2ebf2;
 }
 
 .account{
-  background: steelblue;
   display: grid;
   grid-gap: 10px;
   justify-content: center;
-  background: #b2ebf2;
-}
-
-.change-password-div{
-    background: #b2ebf2;
-     max-width: 500px;
-}
-
-.change-password{
-  display: grid;
-  grid-gap: 10px;
-  justify-content: center;
-  padding: 10px;
 }
 
 .link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.journal {
-    background: #fbf8f8;
-    padding: 15px;
-    color: #3e3c3c;
-    width: 90%;
-    max-width: 700px;
-    margin: 20px auto;
-    display: flex;
-    justify-content: space-between;
+.journal{
+  background: #e6eff3;
+  padding: 15px;
+  color: #3e3c3c;
+  width: 90%;
+  max-width: 700px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: inset 0 0 10px #041140;
+    
 }
 
-.journal:hover {
-    box-shadow: 5px 10px #bdd7e0;
+.journal-title{
+  font-weight: bold;
+  font-size: 20px;
+
 }
 
 .new-journal-form{
@@ -139,11 +113,77 @@ button{
   padding-top: 15px;
 }
 
+.login_form, .signup_form, .change-password-form{
+  display: grid;
+  grid-gap: 10px;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 15px;
+  background: #b2ebf2;
 
+}
 
+.login_form input, .signup_form input, .change-password-form input{
+  padding: 10px;
 
+}
 
+.message{
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  padding: 10px;
+}
 
+button{
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 3px;
+  color: white;
+  font-weight: bold;
+}
 
+.new-btn, .save-btn{
+  background: #0e8e0c; 
+}
 
+.account-btn{
+  background: #dc761f;
+}
 
+.logout-btn, .cancel-btn{
+  background: grey;
+}
+
+.change-password-btn{
+  background: darkslategrey;
+}
+
+.delete-account-btn, .delete-journal-btn{
+  background: red;
+}
+
+.login-btn{
+  background: #e89909;
+}
+
+.signup-btn{
+  background: #0e8e0c;
+}
+
+.button-center{
+  margin: 0 auto;
+}
+
+.link-btn{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.link-btn h1{
+  color: #0a365d;
+  text-decoration: underline;
+}

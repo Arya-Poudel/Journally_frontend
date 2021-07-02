@@ -1,23 +1,47 @@
 import React, {useState, useEffect} from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import Navbar from './Navbar';
+import {useHistory} from 'react-router-dom';
 
 
-const TinyMceDemo = () => {
+const CreateJournal = () => {
 
+  const history = useHistory();
   const initialValue = '';
   const [message, setMessage] = useState('');
   const [value, setValue] = useState(initialValue ?? '');
+  const [error, setError] = useState('');
 
   useEffect(() => setValue(initialValue ?? ''), [initialValue]);
+
+  useEffect(() => {
+    async function getData(){
+      try{
+        const response = await fetch('http://localhost:5000/user/', {
+          mode: 'cors',
+          headers:{
+            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+          },
+        })
+        const data = await response.json();
+        if (!response.ok) {
+          setError(data.message);
+          return;
+        }
+      } catch(err) {
+        setError(err.message);
+      }
+    }
+    getData();
+  }, [])
+
 
    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const title = document.getElementById('title').value;
-
         if (!title || !value) {
-          setMessage('Fill up both fields');
+          setMessage('Please fill up both the fields');
           return;
         }
         
@@ -34,17 +58,21 @@ const TinyMceDemo = () => {
               body: JSON.stringify({title:title, journal: value})
       })
           const data = await response.json();
-          setMessage(data.message);
+          if (response.ok) {
+            alert('Saved');
+             history.push(`/privatejournals/${data.journal._id}`);
+          }
+          setMessage(data.message)
         } catch(err) {
-          console.log(err);
-          setMessage(err);
+          setError(err.message);
         }
    }
 
    return (
      <>
-        <Navbar/>
-         <p>{message}</p>
+     {!error && <div>
+           <Navbar/>
+         <p className="message">{message}</p>
         <form onSubmit={handleSubmit} className="new-journal-form" autoComplete="off">
             <h2>New Journal</h2>
             <input type="text" placeholder="Title" name="title" id="title"/>
@@ -52,12 +80,12 @@ const TinyMceDemo = () => {
               initialValue={initialValue}
               value={value}
               onEditorChange={(newValue, editor) => setValue(newValue)}
-            apiKey="rxu7s9jihhz78zovnx660tl8yno80hjks7cgooi9b97q0u9k"
+              apiKey="rxu7s9jihhz78zovnx660tl8yno80hjks7cgooi9b97q0u9k"
               init={{
                 mode : "textareas",
-         force_br_newlines : false,
-         force_p_newlines : false,
-         forced_root_block : false,
+               force_br_newlines : false,
+               force_p_newlines : false,
+               forced_root_block : false,
                 height: 500,
                 menubar: false,
                  plugins: [
@@ -72,11 +100,14 @@ const TinyMceDemo = () => {
                      content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
               }}
             />}
-              <button type="submit">Submit</button>
+              <button type="submit" className="save-btn">Submit</button>
         </form>
+      </div>
+     }
+       {error && <p className="message">{error}</p>}
 
      </>
    );
  }
 
- export default TinyMceDemo;
+ export default CreateJournal;

@@ -1,22 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import HomeNav from './HomeNav';
 
 const Home = () =>{
 
+	const history = useHistory();
+
+	if (JSON.parse(localStorage.getItem('token'))) {
+		history.push('/privatejournals');
+	}
+	
 	return(
 	<>
 	<div className="home">
-		<nav className="navbar">
-		  <h1>Journally</h1>
-		  <div>
-			  <Link to="/login">
-				  <button className="login-btn">Log In</button>
-			  </Link>
-			  <Link to="signup">
-				  <button className="signup-btn">Sign Up</button>
-			  </Link>
-		  </div>
-		</nav>
+		<HomeNav />
 		<div className="description">
 			<div className="introduction">
 		     	<h2>An online private diary to record your daily-life, thoughts, dreams and frustrations.</h2>
@@ -38,9 +35,9 @@ const Home = () =>{
 			     <h2>Features of Journally:</h2>
 			     <ul>
 			     	<li>All journals are private by default and can only be seen by the creator.</li>
-			     	<li>Can add reviews to your journals. </li>
 			     	<li>Uses encryption so that your journals are always private.</li>
-			     	<li>Also allows to create public journals (anonymously or not)</li>
+			     	<li>You can edit and delete your journals at any time. </li>
+			     	<li>You can delete your account at any time.</li>
 			     </ul>
 			</div>
 	    </div>

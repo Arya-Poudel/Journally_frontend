@@ -1,9 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
+import HomeNav from './HomeNav';
+import {Link} from 'react-router-dom';
 
 const Signup = () => {
 
+	const [message, setMessage] = useState('');
+
 	const handleFormSubmit = async (e) => {
 		e.preventDefault();
+		if (!document.getElementById('username').value || !document.getElementById('password').value || !document.getElementById('confirm_password')) {
+			setMessage('Please fill up all the fields');
+			return;
+		}
 		let formdata = new FormData(document.getElementById('signup_form'));
 		try{
 			const response = await fetch('http://localhost:5000/signup', {
@@ -17,28 +25,29 @@ const Signup = () => {
 				body: JSON.stringify(Object.fromEntries(formdata))
 			})
 			const data = await response.json();
-			console.log(data);
+			setMessage(data.message);
 		} catch(err) {
-			console.log(err);
+			setMessage(err.message)
 		}
 		
 	}
 
 	return(
 	<>
-		<div className="form">
-			<form id="signup_form"  onSubmit={handleFormSubmit} className="form_div" autoComplete="off">
-	        	<label htmlFor="email">Email:</label>
-	        	<input type="email" id="email" name="email" required/>
-	        	<label htmlFor="username" > Username: </label>
-	        	<input type="text" id="username" name="username" required />
-	        	<label htmlFor="password">Password:</label>
-	        	<input type="password" id="password" name="password" required/>
-	        	<label htmlFor="confirm_password">Confirm Password:</label>
-	        	<input type="password" id="confirm_password" name="confirm_password" required/>
-				<button type="submit" className="linkBtn">SIGNUP</button>
-	        </form>
-		</div>
+		<HomeNav />
+		<form id="signup_form"  onSubmit={handleFormSubmit} className="signup_form" autoComplete="off">
+        	<label htmlFor="username" > Username*: </label>
+        	<input type="text" id="username" name="username"  />
+        	<label htmlFor="password">Password*:</label>
+        	<input type="password" id="password" name="password" />
+        	<label htmlFor="confirm_password">Confirm Password*:</label>
+        	<input type="password" id="confirm_password" name="confirm_password" />
+			<button type="submit" className="save-btn">SIGNUP</button>
+			<button type="button" className="cancel-btn">
+				<Link className="link-btn" to="/">Cancel</Link>
+			</button>
+        </form>
+        <p className="message">{message}</p>
    </>
    )
 }

@@ -1,13 +1,41 @@
-import React from "react";
+import React, {useState} from "react";
+import HomeNav from './HomeNav';
+import {Link, useHistory} from 'react-router-dom';
 
-const Login = () =>{
+const Login = () => {
+
+	const history = useHistory();
+	const [message, setMessage] = useState('');
+
 
 	if (JSON.parse(localStorage.getItem('token'))) {
-		window.location.href = 'http://localhost:3000/#/privatejournals';
+		const checkToken = async () => {
+			try{
+				const response = await fetch('http://localhost:5000/user/privatejournals', {
+					mode: 'cors',
+					headers:{
+						'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+					},
+				})
+				if (response.ok) {
+					history.push('/privatejournals');
+				} else{
+					localStorage.removeItem('token');
+				}
+			} catch(err) {
+				setMessage(err.message);
+			}
+		}
+		checkToken();
 	}
+
 
 	const handleFormSubmit = async (e) => {
 		e.preventDefault();
+		if (!document.getElementById('username').value || !document.getElementById('password').value) {
+			setMessage('Please fill up both the fields');
+			return;
+		}
 		let formdata = new FormData(document.getElementById('login_form'));
 		try{
 			const response = await fetch('http://localhost:5000/login', {
@@ -21,26 +49,30 @@ const Login = () =>{
 				body: JSON.stringify(Object.fromEntries(formdata))
 			})
 			const data = await response.json();
-			console.log(data);
-			if (data.token) {
-				localStorage.setItem('token', JSON.stringify(data.token))
-			}
+			setMessage(data.message);
+			if (response.ok) {
+				localStorage.setItem('token', JSON.stringify(data.token));
+				history.push('/privatejournals')
+			}	
 		} catch(err) {
-			console.log(err);
+			setMessage(err.message);
 		}
 	}
 
 	return(
 	<>
-		<div className="form">
-			<form id="login_form"  onSubmit={handleFormSubmit} className="form_div" autoComplete="off">
-	        	<label htmlFor="email">Email:</label>
-	        	<input type="email" id="email" name="email" required/>
-	        	<label htmlFor="password">Password:</label>
-	        	<input type="password" id="password" name="password" required/>
-				<button type="submit" className="linkBtn">LOGIN</button>
-	        </form>
-		</div>
+		<HomeNav />
+		<form id="login_form"  onSubmit={handleFormSubmit} className="login_form" autoComplete="off">
+        	<label htmlFor="username">Username:</label>
+        	<input type="text" id="username" name="username" />
+        	<label htmlFor="password">Password:</label>
+        	<input type="password" id="password" name="password" />
+			<button type="submit" className="save-btn">LOGIN</button>
+			<button type="button" className="cancel-btn">
+				<Link className="link-btn" to="/">Cancel</Link>
+			</button>
+        </form>
+        <p className="message">{message}</p>
    </>
    )
 }

@@ -4,13 +4,14 @@ import Navbar from './Navbar';
 
 const PrivateJournals = () => {
 
-	function decodeHtml(html) {
-	    var txt = document.createElement("textarea");
+	const decodeHtml =  (html) => {
+	    const txt = document.createElement("textarea");
 	    txt.innerHTML = html;
 	    return txt.value;
 	}
 
 	const [journals, setJournals] = useState([]);
+	const [error, setError] = useState('');
 
 	useEffect(() => {
 		async function getData(){
@@ -22,10 +23,13 @@ const PrivateJournals = () => {
 					},
 				})
 				const data = await response.json();
-				console.log(data);
+				if (!response.ok) {
+					setError(data.message);
+					return;
+				}
 				setJournals(data);
 			} catch(err) {
-				console.log(err);
+				setError(err.message);
 			}
 		}
 		getData();
@@ -33,19 +37,20 @@ const PrivateJournals = () => {
 
 	return(
 	<>
-		<div>
+		{(!error && <div> 
 			<Navbar />
-			 {journals.map(journal => (
-			 	<Link key={journal._id} className="link" to={`/journal/${journal._id}`}> 
-			 		<div className="journal">
-				 		<p>{decodeHtml(journal.title)}</p>
-				 		<p>{decodeHtml(journal.date.split("T")[0])}</p>
+			{journals.map(journal => (
+			<Link key={journal._id} className="link" to={`/privatejournals/${journal._id}`}> 
+				<div className="journal">
+		 		<p className="journal-title">{decodeHtml(journal.title)}</p>
+		 		<p>{decodeHtml(journal.date.split("T")[0])}</p>
+				</div>
+			</Link>
+			)
+		)}
+		</div>)}
 
-			 		</div>
-			 	</Link>
-			 	)
-			 )}
-		</div>
+		{(error && <p className="message">{error}</p>)}
    </>
    )
 }

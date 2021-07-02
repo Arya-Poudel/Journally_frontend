@@ -1,5 +1,4 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import Home from './Components/Home';
 import Login from './Components/Login';
@@ -18,10 +17,10 @@ function App() {
              <Route exact path ="/" component={Home} />
              <Route exact path ="/login" component={Login} />
              <Route exact path ="/signup" component={Signup} />
-             <Route exact path ="/privatejournals" component={PrivateJournals} />
-             <Route exact path ="/createjournal" component={CreateJournal} />
              <Route exact path = "/account" component={UserInfo} />
-             <Route exact path="/journal/:id" 
+             <Route exact path ="/privatejournals" component={PrivateJournals} />
+             <Route exact path ="/privatejournals/create" component={CreateJournal} />
+             <Route exact path="/privatejournals/:id" 
                   render = {routeProps => (
                     <JournalInfo blogId={routeProps.match.params.id}  />
                   )}
