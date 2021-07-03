@@ -189,3 +189,10 @@ button{
   color: #0a365d;
   text-decoration: underline;
 }
+
+@media(max-width: 375px){
+  .navbar, .loggedin-nav{
+    display: block;
+    text-align: center;
+  }
+}
