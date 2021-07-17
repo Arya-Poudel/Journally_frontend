@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Journally_frontend/static/css/main.dc37aa32.chunk.css",
-    "main.js": "/Journally_frontend/static/js/main.826aca14.chunk.js",
-    "main.js.map": "/Journally_frontend/static/js/main.826aca14.chunk.js.map",
+    "main.js": "/Journally_frontend/static/js/main.110bf68c.chunk.js",
+    "main.js.map": "/Journally_frontend/static/js/main.110bf68c.chunk.js.map",
     "runtime-main.js": "/Journally_frontend/static/js/runtime-main.cf3cb5be.js",
     "runtime-main.js.map": "/Journally_frontend/static/js/runtime-main.cf3cb5be.js.map",
     "static/js/2.49bbe12c.chunk.js": "/Journally_frontend/static/js/2.49bbe12c.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.cf3cb5be.js",
     "static/js/2.49bbe12c.chunk.js",
     "static/css/main.dc37aa32.chunk.css",
-    "static/js/main.826aca14.chunk.js"
+    "static/js/main.110bf68c.chunk.js"
   ]
 }
